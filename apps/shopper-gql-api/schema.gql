@@ -1,0 +1,39 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Shopper {
+  """Identifier"""
+  id: ID!
+
+  """First Name"""
+  firstName: String!
+
+  """Last Name"""
+  lastName: String!
+
+  """Email Address"""
+  emailAddress: String!
+}
+
+type Query {
+  shoppers: [Shopper!]!
+  shopper(id: Int!): Shopper!
+}
+
+type Mutation {
+  createShopper(createShopperInput: CreateShopperInput!): Shopper!
+  updateShopper(updateShopperInput: UpdateShopperInput!): Shopper!
+  removeShopper(id: Int!): Shopper!
+}
+
+input CreateShopperInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateShopperInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}

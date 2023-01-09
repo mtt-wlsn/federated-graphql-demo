@@ -1,7 +1,8 @@
+import { ResourcesModule } from './resources/resources.module';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
-import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
+import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core';
 
 @Module({
   imports: [
@@ -10,9 +11,10 @@ import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin
       debug: false,
       playground: false,
       plugins: [ApolloServerPluginLandingPageLocalDefault()],
-      autoSchemaFile: 'apps/order-gql-api/schema.gql',
-      sortSchema: true,
+      autoSchemaFile: 'apps/shopper-gql-api/schema.gql',
+      sortSchema: false,
     }),
+    ResourcesModule,
   ],
 })
 export class AppModule {}
