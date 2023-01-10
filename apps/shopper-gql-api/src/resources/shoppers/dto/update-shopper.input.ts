@@ -1,8 +1,8 @@
 import { CreateShopperInput } from './create-shopper.input';
-import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
+import { InputType, Field, PartialType, ID } from '@nestjs/graphql';
 
 @InputType()
 export class UpdateShopperInput extends PartialType(CreateShopperInput) {
-  @Field(() => Int)
-  id: number;
+  @Field(() => ID, { description: 'Identifier' })
+  id: string;
 }
