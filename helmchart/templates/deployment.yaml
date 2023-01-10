@@ -1,0 +1,35 @@
+{{- range .Values.Deployments }}
+{{- $fullName := printf "%s-%s" $.Release.Name .name -}}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ $fullName }}
+  namespace: {{ $.Release.Namespace }}
+  labels:
+    app: {{ $fullName }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ $fullName }}
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: {{ $fullName }}
+    spec:
+      containers:
+        - name: {{ $fullName }}
+          image: {{ $.Values.application_image }}
+          command: {{ .command }}
+          imagePullPolicy: IfNotPresent
+          {{- with .resources }}
+          resources:
+            limits:
+              memory: 250m
+              cpu: 250m
+            requests:
+              memory: 250m
+              cpu: 250m
+          {{- end }}
+---
+{{- end }}
