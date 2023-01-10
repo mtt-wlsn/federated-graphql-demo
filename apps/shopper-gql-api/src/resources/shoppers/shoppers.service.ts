@@ -27,7 +27,7 @@ export class ShoppersService {
     return this.shoppers.find((x) => x.id == id);
   }
 
-  update(id: string, updateShopperInput: UpdateShopperInput) {
+  update(id: string, updateShopperInput: UpdateShopperInput): Shopper {
     const shopper = this.shoppers.find((x) => x.id == id);
 
     if (!shopper) return;
