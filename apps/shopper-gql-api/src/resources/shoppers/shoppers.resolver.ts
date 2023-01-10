@@ -1,4 +1,10 @@
-import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
+import {
+  Resolver,
+  Query,
+  Mutation,
+  Args,
+  ResolveReference,
+} from '@nestjs/graphql';
 import { ShoppersService } from './shoppers.service';
 import { Shopper } from './entities/shopper.entity';
 import { CreateShopperInput } from './dto/create-shopper.input';
@@ -38,5 +44,10 @@ export class ShoppersResolver {
   @Mutation(() => Shopper)
   removeShopper(@Args('id', { type: () => String }) id: string) {
     return this.shoppersService.remove(id);
+  }
+
+  @ResolveReference()
+  resolveReference(reference: { __typename: string; id: string }) {
+    return this.shoppersService.findOne(reference.id);
   }
 }

@@ -22,14 +22,14 @@ Create a new supergraph in apollo studio and save the generated Apollo Key.
 
 ```bash
 # The Order API Schema
-rover subgraph publish federated-graphql-demo@current \
+rover subgraph publish federated-graphql-demo \
   --schema ./apps/order-gql-api/schema.gql \
   --name order-gql-api \
   --routing-url http://federated-graphql-demo-order-api.federated-graphql-demo.svc.cluster.local/graphql
 
 
 # The Shopper API Schema
-rover subgraph publish federated-graphql-demo@current \
+rover subgraph publish federated-graphql-demo \
   --schema ./apps/shopper-gql-api/schema.gql \
   --name shopper-gql-api \
   --routing-url http://federated-graphql-demo-shopper-api.federated-graphql-demo.svc.cluster.local/graphql

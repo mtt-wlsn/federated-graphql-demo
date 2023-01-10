@@ -1,6 +1,17 @@
-# ------------------------------------------------------
-# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
-# ------------------------------------------------------
+directive @shareable on FIELD_DEFINITION | OBJECT
+
+directive @link(url: String!, import: [link__Import]) on SCHEMA
+
+directive @inaccessible on FIELD_DEFINITION | OBJECT | INTERFACE | UNION | ARGUMENT_DEFINITION | SCALAR | ENUM | ENUM_VALUE | INPUT_OBJECT | INPUT_FIELD_DEFINITION
+
+directive @override(from: String!) on FIELD_DEFINITION
+
+type Shopper
+  @extends
+  @key(fields: "id")
+{
+  id: ID! @external
+}
 
 type Order {
   """Identifier"""
@@ -8,6 +19,7 @@ type Order {
 
   """Id of the Shopper purchasing the order."""
   shopperId: String!
+  shopper: Shopper!
 
   """Id of the product being purchased."""
   productId: String!
@@ -60,3 +72,5 @@ input UpdateOrderInput {
   """Identifier"""
   id: ID!
 }
+
+scalar link__Import

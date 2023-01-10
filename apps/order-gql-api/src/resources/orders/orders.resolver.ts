@@ -1,8 +1,9 @@
-import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
+import { Resolver, Query, Mutation, Args, Parent } from '@nestjs/graphql';
 import { OrdersService } from './orders.service';
 import { Order } from './entities/order.entity';
 import { CreateOrderInput } from './dto/create-order.input';
 import { UpdateOrderInput } from './dto/update-order.input';
+import { Shopper } from './entities/shopper.entity';
 
 @Resolver(() => Order)
 export class OrdersResolver {
@@ -33,7 +34,15 @@ export class OrdersResolver {
   }
 
   @Mutation(() => Order)
-  removeOrder(@Args('id', { type: () => String }) id: string) {
+  removeOrder(@Args('id', { type: () => String }) id: string): void {
     return this.ordersService.remove(id);
+  }
+
+  @Resolver(() => Shopper)
+  shopper(@Parent() order: Order): any {
+    return {
+      __typename: 'Shopper',
+      id: order.shopperId,
+    };
   }
 }
