@@ -1,4 +1,11 @@
-import { Resolver, Query, Mutation, Args, Parent } from '@nestjs/graphql';
+import {
+  Resolver,
+  Query,
+  Mutation,
+  Args,
+  Parent,
+  ResolveField,
+} from '@nestjs/graphql';
 import { OrdersService } from './orders.service';
 import { Order } from './entities/order.entity';
 import { CreateOrderInput } from './dto/create-order.input';
@@ -38,7 +45,7 @@ export class OrdersResolver {
     return this.ordersService.remove(id);
   }
 
-  @Resolver(() => Shopper)
+  @ResolveField(() => Shopper)
   shopper(@Parent() order: Order): any {
     return {
       __typename: 'Shopper',

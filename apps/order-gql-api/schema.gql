@@ -18,17 +18,17 @@ type Order {
   id: ID!
 
   """Id of the Shopper purchasing the order."""
-  shopperId: String!
-  shopper: Shopper!
+  shopperId: String
+  shopper: Shopper
 
   """Id of the product being purchased."""
   productId: String!
 
   """The amount of products being purchased."""
-  quantity: Float!
+  quantity: Float
 
   """The total amount the shopper will be charged for the order."""
-  totalPrice: Float!
+  totalPrice: Float
 }
 
 type Query {
@@ -44,16 +44,16 @@ type Mutation {
 
 input CreateOrderInput {
   """Id of the Shopper purchasing the order."""
-  shopperId: String!
+  shopperId: String
 
   """Id of the product being purchased."""
-  productId: String!
+  productId: String
 
   """The amount of products being purchased."""
-  quantity: Float!
+  quantity: Float
 
   """The total amount the shopper will be charged for the order."""
-  totalPrice: Float!
+  totalPrice: Float
 }
 
 input UpdateOrderInput {

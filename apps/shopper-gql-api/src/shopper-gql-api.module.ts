@@ -29,4 +29,4 @@ import { writeFileSync } from 'fs';
     ResourcesModule,
   ],
 })
-export class AppModule {}
+export class ShopperGqlApiModule {}

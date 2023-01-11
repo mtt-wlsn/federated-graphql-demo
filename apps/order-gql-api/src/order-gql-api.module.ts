@@ -33,4 +33,4 @@ import { printSubgraphSchema } from '@apollo/subgraph';
     ResourcesModule,
   ],
 })
-export class AppModule {}
+export class OrderGqlApiModule {}
