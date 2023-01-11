@@ -9,8 +9,13 @@ replicaCount: 1
 # -- See https://www.apollographql.com/docs/router/configuration/overview#configuration-file for yaml structure
 router:
   configuration:
+    sandbox:
+      enabled: true
     supergraph:
       listen: 0.0.0.0:80
+      introspection: true
+    homepage:
+      enabled: false
     health-check:
       listen: 0.0.0.0:8088
     telemetry:

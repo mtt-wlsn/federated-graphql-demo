@@ -1,19 +1,25 @@
-# ------------------------------------------------------
-# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
-# ------------------------------------------------------
+directive @shareable on FIELD_DEFINITION | OBJECT
 
-type Shopper {
+directive @link(url: String!, import: [link__Import]) on SCHEMA
+
+directive @inaccessible on FIELD_DEFINITION | OBJECT | INTERFACE | UNION | ARGUMENT_DEFINITION | SCALAR | ENUM | ENUM_VALUE | INPUT_OBJECT | INPUT_FIELD_DEFINITION
+
+directive @override(from: String!) on FIELD_DEFINITION
+
+type Shopper
+  @key(fields: "id")
+{
   """Identifier"""
   id: ID!
 
   """First Name"""
-  firstName: String!
+  firstName: String
 
   """Last Name"""
-  lastName: String!
+  lastName: String
 
   """Email Address"""
-  emailAddress: String!
+  emailAddress: String
 }
 
 type Query {
@@ -29,13 +35,13 @@ type Mutation {
 
 input CreateShopperInput {
   """First Name"""
-  firstName: String!
+  firstName: String
 
   """Last Name"""
-  lastName: String!
+  lastName: String
 
   """Email Address"""
-  emailAddress: String!
+  emailAddress: String
 }
 
 input UpdateShopperInput {
@@ -51,3 +57,5 @@ input UpdateShopperInput {
   """Identifier"""
   id: ID!
 }
+
+scalar link__Import
